@@ -12,8 +12,10 @@ I realized that this could be used as a much better way to view "DVR" - *what is
 7. `Seconds` to `Hours`
 8. Apply
 9. Click the `Add to Playlist` button, it looks like a list with a plus sign.
-10. New Playlist - `Last Nights TV Shows` - Enter! *I ended up naming mine `1ast nights tv shows` to be the first playlist listed in organizr*
-
+10. New Playlist - `Last Nights TV Shows` - Enter! *I ended up naming mine `1 Last Nights TV Shows`*
+  - If you are using layer#cake, Plex sorts by #, there is an add-on that removes the first number and space now. 
+  - https://github.com/leram84/layer.Cake/blob/master/Add-Ons/Numbered-Plist-Fix.css < paste that into your addons section
+  
 ## This is what your Filter should look like!! 
 <img src="https://user-images.githubusercontent.com/23283167/28600567-bf3e9776-7180-11e7-91c0-d6ef8f6c491d.png" width="100%">
 
