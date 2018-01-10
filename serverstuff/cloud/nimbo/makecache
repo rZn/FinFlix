@@ -1,0 +1,33 @@
+#!/bin/sh
+# shellcheck source=config
+. ${HOME}/.config/nimbostratus/config
+
+if [ ! -d "${local_cache_dir}" ]; then
+	mkdir -p "${local_cache_dir}"
+fi
+
+echo "################# Building Directories ################"
+find -L "${plex_media_dir}" -type d |
+while read -r dir; do
+	cache_directory="$(readlink -f "${dir}" | sed -e "s@${plex_media_dir}@${local_cache_dir}@")"
+
+	if [ ! -d "$cache_directory" ]; then
+		echo "[ $(date ${date_format}) ] Creating cache directory -> ${cache_directory}."	
+		mkdir "$cache_directory"
+	else
+		echo "[ $(date ${date_format}) ] Cache directory -> $cache_directory already exists."
+	fi
+done
+
+echo "################ Creatingi File Cache ################"
+find -L "${plex_media_dir}" -type f |
+while read -r file; do
+	cache_file="$(readlink -f "${file}" | sed -e "s@${plex_media_dir}@${local_cache_dir}@")"
+
+	if [ ! -f "$cache_file" ]; then
+		echo "[ $(date ${date_format}) ] Creating cache file -> ${cache_file}."
+		touch "$cache_file"
+	else
+		echo "[ $(date ${date_format}) ] Cache file -> $cache_file already exists."
+	fi
+done
